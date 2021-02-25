@@ -2,15 +2,13 @@
 ## Intro
 This manual is dedicated to create vagrant virtualbox base ubuntu lts box, start it and make some tests.
 ## Requirements
-* Operating system: Linux / Mac OSX of recent version
-* Bash/Zsh interpreter basic usage skills
 * Oracle Virtualbox recent version installed
 * Hashicorp packer recent version installed
 * Hashicorp vagrant recent version installed
 * git installed
 * rbenv installed
 ## Preparation 
-* Clone git repository. Run using Bash/Zsh interpreter 
+* Clone git repository. 
 ```bash
 git clone https://github.com/kikitux/packer_bionic64
 ```
