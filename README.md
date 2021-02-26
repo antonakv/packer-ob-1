@@ -1,18 +1,33 @@
 # Using Packer, create a vagrant virtualbox base ubuntu lts box - README.md with instructions (github repo)
+
 ## Intro
 This manual is dedicated to create vagrant virtualbox base ubuntu lts box. Tested on Mac OS X.
+
 ## Requirements
-* Oracle Virtualbox recent version installed. [VirtualBox installation manual](https://www.virtualbox.org/manual/ch01.html#intro-installing)
-* Hashicorp packer recent version installed. [Packer installation manual](https://learn.hashicorp.com/tutorials/packer/getting-started-install)
-* Hashicorp vagrant recent version installed. [Vagrant installation manual](https://learn.hashicorp.com/tutorials/vagrant/getting-started-install)
-* git installed. [Git installation manual](https://git-scm.com/download/mac)
-* rbenv installed [Rbenv installation manual](https://github.com/rbenv/rbenv#installation)
+- Oracle Virtualbox recent version installed
+[VirtualBox installation manual](https://www.virtualbox.org/manual/ch01.html#intro-installing)
+
+- Hashicorp packer recent version installed
+[Packer installation manual](https://learn.hashicorp.com/tutorials/packer/getting-started-install)
+
+- Hashicorp vagrant recent version installed
+[Vagrant installation manual](https://learn.hashicorp.com/tutorials/vagrant/getting-started-install)
+
+- git installed
+[Git installation manual](https://git-scm.com/download/mac)
+
+- rbenv installed
+[Rbenv installation manual](https://github.com/rbenv/rbenv#installation)
+
 ## Preparation 
-* Clone git repository. 
+- Clone git repository. 
+
 ```bash
 git clone https://github.com/antonakv/packer-ob-1
 ```
+
 Expected command output looks like this:
+
 ```bash
 Cloning into 'packer-ob-1'...
 remote: Enumerating objects: 12, done.
@@ -22,16 +37,22 @@ remote: Total 12 (delta 1), reused 3 (delta 0), pack-reused 0
 Receiving objects: 100% (12/12), done.
 Resolving deltas: 100% (1/1), done.
 ```
-* Change folder to packer_bionic64 
+
+- Change folder to packer_bionic64 
+
 ```bash
 cd packer_bionic64
 ```
+
 ## Build
-* In the same folder you were before run 
+- In the same folder you were before run 
+- 
 ```bash
 packer build template.json
 ```
+
 Sample result
+
 ```bash
 bionic64-vbox: output will be in this color.
 
@@ -69,10 +90,13 @@ Build 'bionic64-vbox' finished after 11 minutes 39 seconds.
 --> bionic64-vbox: VM files in directory: output-bionic64-vbox
 --> bionic64-vbox: 'virtualbox' provider box: bionic64-vbox.box
 ```
-* Add the built image box to Virtualbox 
+
+- Add the built image box to Virtualbox
+
 ```bash
 vagrant box add --force --name bionic64  bionic64-vbox.box
 ```
+
 Sample result
 ```
 ==> box: Box file was not detected as metadata. Adding it directly...
@@ -80,15 +104,20 @@ Sample result
     box: Unpacking necessary files from: file:///Users/user/Documents/packer-ob-1/bionic64-vbox.box
 ==> box: Successfully added box 'bionic64' (v0) for 'virtualbox'!
 ```
+
 ## Test OS image (optional)
 Do tests to ensure if Operating system image is functioning as expected
-* Install ruby 2.6.6 using rbenv
+
+- Install ruby 2.6.6 using rbenv
+
 ```bash
 rbenv install -l
 rbenv install 2.6.6
 rbenv local 2.6.6 
 ```
+
 Sample output
+
 ```bash
 ➜  packer-ob-1 git:(master) rbenv install -l
 2.5.8
@@ -116,11 +145,14 @@ Installed ruby-2.6.6 to /Users/aakulov/.rbenv/versions/2.6.6
 ➜  packer-ob-1 git:(master) rbenv local 2.6.6 
 ➜  packer-ob-1 git:(master) 
 ```
-* Install kitchen-test locally
+
+- Install kitchen-test locally
 ```bash
 bundle install --path vendor/bundle
 ```
+
 Expected result
+
 ```
 ➜  packer-ob-1 git:(master) bundle install --path vendor/bundle
 Fetching gem metadata from https://rubygems.org/........
@@ -140,10 +172,11 @@ Installing kitchen-vagrant 1.8.0
 Bundle complete! 4 Gemfile dependencies, 180 gems now installed.
 Bundled gems are installed into `./vendor/bundle`
 ```
-* Perform tests
+- Perform tests
 ```bash
 bundle exec kitchen test
 ```
+
 Expected command output
 ```bash
 -----> Starting Test Kitchen (v2.10.0)
